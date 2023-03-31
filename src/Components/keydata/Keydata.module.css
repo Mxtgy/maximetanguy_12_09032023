@@ -1,0 +1,30 @@
+.card {
+    background-color: #FBFBFB;
+    border-radius: 5px;
+    display: flex;
+    padding: 1.5em 2em 1.5em 2em;
+    justify-content: left;
+    align-items: center;
+    /*margin: .5em 0;*/
+}
+
+.card img {
+    margin-right: 2em;
+    width: 30%;
+}
+
+.card_informations span {
+    display: block;
+}
+
+.data {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #282D30;
+    margin-bottom: .2em;
+}
+.type {
+    color: #74798C;
+    font-weight: 500;
+    font-size: .8em;
+}

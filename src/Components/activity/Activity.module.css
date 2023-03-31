@@ -1,0 +1,9 @@
+.title {
+    font-size: 1em;
+    font-weight: 500;
+    color: #20253A;
+}
+
+.recharts-legend-item-text {
+    font-size: 50em !important;
+}
