@@ -1,0 +1,44 @@
+.chart {
+    background-color: #FF0000;
+    border-radius: 5px;
+    position: relative;
+    width: 30%;
+}
+
+.customtooltip {
+    background-color: #000;
+    opacity: 1;
+    height: 100%;
+    outline: none;
+}
+
+.label {
+    color: #FFF;
+}
+
+.title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: 500;
+    color: #FFF;
+    opacity: .5;
+}
+.title strong {
+    display: block;
+}
+
+.days {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-weight: 500;
+    color: #FFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: .5;
+}
