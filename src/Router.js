@@ -6,7 +6,7 @@ function Router() {
     return (
         <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/user/:user" element={<Dashboard/>}></Route>
+            <Route path="/user/:userId" element={<Dashboard/>}></Route>
         </Routes>
     );
 }

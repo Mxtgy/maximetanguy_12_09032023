@@ -1,4 +1,7 @@
-import { user, activity, average_session, performance } from '../../Data/mock.js';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { fetchUserData } from '../../Components/Utils/Service.js';
+//import { user, activity, average_session, performance } from '../../Data/mock.js';
 import Keydata from '../../Components/keydata/Keydata.js';
 import Activity from '../../Components/activity/Activity.js';
 import Linechart from '../../Components/linechart/Linechart.js';
@@ -11,28 +14,36 @@ import lipidIcon from '../../Assets/fat-icon.svg';
 import styles from './Dashboard.module.css';
 
 
-console.log(user);
-console.log(user);
-console.log(activity);
-console.log(average_session);
-console.log(performance);
-
-
 function Dashboard() {
 
-    const userkeyData = user.data.keyData;
+    const { userId } = useParams();
+    const [userkeyData, setUserKeyData] = useState({});
+    const [userName, setUserName] = useState();
+    //const [logErr, setLogErr] = useState(false);
+    
+
+    useEffect(() => {
+        async function getData() {
+            if (userId) {
+                const getData = await fetchUserData(userId);
+                if (getData) {
+                    setUserName(getData.userInfos.firstName);
+                    setUserKeyData(getData.keyData);
+                }
+            }
+        }
+        getData();
+    }, [userId]);
 
     return (
         <>
             <section className={styles.greetings_section}>
-                <h1 className={styles.greeting}>Bonjour <span className={styles.username}>{user.data.userInfos.firstName}</span></h1>
+                <h1 className={styles.greeting}>Bonjour <span className={styles.username}>{userName}</span></h1>
                 <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
             </section>
             <section className={styles.datas_section}>
                 <div className={styles.graphs}>
-                    <div className={styles.graph_activity}>
-                        <Activity />
-                    </div>
+                    <Activity />
                     <Linechart />
                     <Performance />
                     <Score />

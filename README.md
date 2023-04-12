@@ -1,10 +1,13 @@
-# Getting Started with Create React App
+# FRONT-END SPORTSEE
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## What you will need
 
-In the project directory, you can run:
+This site was built using [GitHub Pages](https://pages.github.com/).
+
+## Installation
+
 
 ### `npm start`
 
