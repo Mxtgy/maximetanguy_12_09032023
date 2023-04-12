@@ -1,4 +1,7 @@
 .chart {
     background-color: #282D30;
     border-radius: 5px;
+    position: relative;
+    width: 30%;
+    height: 220px;
 }

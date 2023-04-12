@@ -1,9 +1,57 @@
-.title {
-    font-size: 1em;
-    font-weight: 500;
-    color: #20253A;
+.graph_activity {
+    padding: 1em 0;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-bottom: 2em;
 }
 
-.recharts-legend-item-text {
-    font-size: 50em !important;
+.head_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin: 1em 0 4em;
+    padding: 0 1em;
+}
+
+.title {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #20253A;
+    margin-left: 2em;
+}
+
+.legends {
+    font-size: .8em;
+    color: #74798C;
+    font-weight: 500;
+    margin-right: 5.5em;
+}
+.legends span {
+    position: relative;
+    margin-left: 3em;
+}
+.legends .weight::before, .legends .kcal::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: .7em;
+    height: .7em;
+    top: .3em;
+    left: -1.5em;
+    border-radius: 50%;
+}
+.legends .weight::before {
+    background-color: #282D30;
+}
+.legends .kcal::before {
+    background-color: #E60000;
+}
+
+@media screen and (max-width: 1100px) {
+    .head_wrapper {
+        margin: 1em 0 2em;
+    }
 }

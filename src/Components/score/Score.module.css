@@ -2,4 +2,42 @@
     background-color: #FBFBFB;
     border-radius: 5px;
     position: relative;
+    width: 30%;
+    height: 220px;
+}
+
+.title {
+    position: absolute;
+    display: block;
+    width: 100%;
+    text-align: left;
+    top: 10%;
+    bottom: 0;
+    left: 10%;
+    right: 0;
+    margin: auto;
+    z-index: 999;
+    font-weight: 500;
+    color: #20253A;
+}
+.intext {
+    position: absolute;
+    display: block;
+    text-align: center;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 999;
+    transform: translateY(-25%);
+    color: #74798C;
+    font-weight: 500;
+}
+.intext em {
+    display: block;
+    color: #282D30;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.3em;
 }

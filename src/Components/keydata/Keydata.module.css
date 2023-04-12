@@ -2,15 +2,14 @@
     background-color: #FBFBFB;
     border-radius: 5px;
     display: flex;
-    padding: 1.5em 2em 1.5em 2em;
+    padding: 1.8em 2em;
     justify-content: left;
     align-items: center;
-    /*margin: .5em 0;*/
 }
 
 .card img {
     margin-right: 2em;
-    width: 30%;
+    width: 31%;
 }
 
 .card_informations span {

@@ -3,29 +3,38 @@
     border-radius: 5px;
     position: relative;
     width: 30%;
+    height: 220px;
 }
 
 .customtooltip {
-    background-color: #000;
-    opacity: 1;
-    height: 100%;
+    background-color: #FFF;
+    padding: 0 .2em;
+    width: 3em;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .label {
-    color: #FFF;
+    color: #000;
+    white-space: nowrap;
+    font-size: .7em;
 }
 
 .title {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 1.5em;
+    left: 1.5em;
     font-weight: 500;
+    font-size: .9em;
     color: #FFF;
     opacity: .5;
 }
 .title strong {
     display: block;
+    font-weight: 500;
 }
 
 .days {

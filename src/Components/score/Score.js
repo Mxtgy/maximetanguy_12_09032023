@@ -1,33 +1,66 @@
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import styles from './Score.module.css';
-
-const data01 = [
-    { value: 1000 }
-  ];
-  const data = [
-    { value: .30 }
-  ];
-
-  const percent = data[0]["value"] * 360;
-  const check = data[0]["value"] * 100;
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { fetchUserScore } from '../../Components/Utils/Service.js';
+import { formatForScore } from '../Utils/Modelisation';
 
 function Score() {
-    
+
+    const { userId } = useParams();
+    const [userScore, setUserScore] = useState();
+
+    useEffect(() => {
+        async function getData() {
+            if (userId) {
+                const getData = await fetchUserScore(userId);
+                if (getData) {
+                    const score = formatForScore(getData);
+                    if (score) {
+                        setUserScore(score);
+                    }
+                }
+            }
+        }
+        getData();
+    }, [userId]);
+
     return(
-        <ResponsiveContainer className={styles.chart} width="30%" height={220}>
-            <PieChart width={400} height={400}>
-                <text x={30} y={13} fill="black" textAnchor="middle" dominantBaseline="central">
-                    <tspan className={styles.title}>Score</tspan>
-                </text>
-                
-                <Pie data={data01} startAngle={90} endAngle={450} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#FFF" />
-                <Pie data={data} startAngle={90} endAngle={90 + percent} dataKey="value" cx="50%" cy="50%" cornerRadius={50} innerRadius={60} outerRadius={70} stroke="none" fill="#E60000" />
-                <text x={100} y={100} fill="black" textAnchor="middle" dominantBaseline="central">
-                    <tspan className={styles.title}>{check} de votre objectif</tspan>
-                </text>
-            </PieChart>
-            
-      </ResponsiveContainer>
+        <div className={styles.chart}>
+            { userScore && userScore[0].text && userScore[0].angle ?
+                <>
+                    <span className={styles.title}>Score</span>
+                    <span className={styles.intext}><em>{ userScore[0].text }</em> de votre <br></br>objectif</span>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>             
+                            <Pie
+                                data={[{value: 1000}]}
+                                startAngle={90}
+                                endAngle={450}
+                                dataKey="value"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={70}
+                                fill="#FFF"
+                            />
+                            <Pie
+                                data={userScore}
+                                startAngle={90}
+                                endAngle={90 + userScore[0].angle }
+                                dataKey="value"
+                                cx="50%"
+                                cy="50%"
+                                cornerRadius={50}
+                                innerRadius={70}
+                                outerRadius={80}
+                                stroke="none"
+                                fill="#E60000"
+                            />
+                        </PieChart>
+                    </ResponsiveContainer>
+                </>
+            : null}
+        </div>
     );
 }
 
