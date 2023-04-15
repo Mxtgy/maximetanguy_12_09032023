@@ -2,8 +2,8 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle 
 import styles from './Linechart.module.css';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { fetchUserAverageSessions } from '../../Components/Utils/Service.js';
-import { formatForAverageSessions } from '../Utils/Modelisation';
+import { fetchUserAverageSessions } from '../Utils/fetchData.js';
+import { formatForAverageSessions } from '../Utils/formatData';
 
 function Linechart() {
 
@@ -16,9 +16,7 @@ function Linechart() {
                 const getData = await fetchUserAverageSessions(userId);
                 if (getData) {
                     const averageSessions = formatForAverageSessions(getData);
-                    if (averageSessions) {
-                        setUserAverageSessions(averageSessions);
-                    }
+                    setUserAverageSessions(averageSessions);
                 }
             }
         }

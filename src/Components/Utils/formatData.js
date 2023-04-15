@@ -37,15 +37,12 @@ function formatForActivity(data) {
             sessionsArray.push(session);
         }
     }
-    if (sessionsArray && sessionsArray.length > 0) {
-        return sessionsArray;
-    }
-    return false; 
+    return sessionsArray;
 }
 
 function formatForPerformance(data) {
 
-    if (!data || !data.data) return false;
+    if (!data || !data.data) return [];
     const kind = {
         1: "Cardio",
         2: "Energie",
@@ -68,11 +65,7 @@ function formatForPerformance(data) {
         }
     }
 
-    if (performance && performance.length > 0) {
-        return performance;
-    }
-    
-    return false; 
+    return performance;
 }
 
 
