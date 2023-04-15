@@ -2,7 +2,7 @@
 
 This is the frond-end of SportSee, a sports coaching application.
 
-![Maquette](/public/Maquette.png "L'interface de SportSee")
+![Maquette](/public/maquette.png "L'interface de SportSee")
 
  
 ## Getting Started
