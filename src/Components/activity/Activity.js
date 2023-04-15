@@ -2,8 +2,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import styles from './Activity.module.css';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { fetchUserActivity } from '../../Components/Utils/Service.js';
-import { formatForActivity } from '../Utils/Modelisation';
+import { fetchUserActivity } from '../Utils/fetchData.js';
+import { formatForActivity } from '../Utils/formatData';
 
 function Activity() {
 
@@ -16,9 +16,7 @@ function Activity() {
                 const getData = await fetchUserActivity(userId);
                 if (getData) {
                     const activity = formatForActivity(getData);
-                    if (activity) {
-                        setUserActivity(activity);
-                    }
+                    setUserActivity(activity);
                 }
             }
         }

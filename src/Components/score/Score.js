@@ -2,8 +2,8 @@ import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import styles from './Score.module.css';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { fetchUserScore } from '../../Components/Utils/Service.js';
-import { formatForScore } from '../Utils/Modelisation';
+import { fetchUserScore } from '../Utils/fetchData.js';
+import { formatForScore } from '../Utils/formatData';
 
 function Score() {
 
@@ -16,9 +16,7 @@ function Score() {
                 const getData = await fetchUserScore(userId);
                 if (getData) {
                     const score = formatForScore(getData);
-                    if (score) {
-                        setUserScore(score);
-                    }
+                    setUserScore(score);
                 }
             }
         }

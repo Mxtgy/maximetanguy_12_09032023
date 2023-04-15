@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { fetchUserData } from '../../Components/Utils/Service.js';
+import { fetchUserData } from '../../Components/Utils/fetchData.js';
 //import { user, activity, average_session, performance } from '../../Data/mock.js';
 import Keydata from '../../Components/keydata/Keydata.js';
 import Activity from '../../Components/activity/Activity.js';
