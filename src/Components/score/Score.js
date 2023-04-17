@@ -1,5 +1,6 @@
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import styles from './Score.module.css';
+//import { user } from '../../Data/mock.js'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { fetchUserScore } from '../Utils/fetchData.js';
@@ -9,6 +10,11 @@ function Score() {
 
     const { userId } = useParams();
     const [userScore, setUserScore] = useState();
+
+    /*useEffect(() => {
+        const scoreMock = formatForScore(user.data);
+        setUserScore(scoreMock);
+    }, []);*/
 
     useEffect(() => {
         async function getData() {

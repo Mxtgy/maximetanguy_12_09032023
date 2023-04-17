@@ -1,5 +1,6 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import styles from './Performance.module.css';
+//import { performance } from '../../Data/mock.js'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { fetchUserPerformance } from '../Utils/fetchData.js';
@@ -9,6 +10,11 @@ function Performance() {
 
     const { userId } = useParams();
     const [userPerformance, setUserPerformance] = useState();
+
+    /*useEffect(() => {
+        const performanceMock = formatForPerformance(performance.data);
+        setUserPerformance(performanceMock);
+    }, []);*/
 
     useEffect(() => {
         async function getData() {

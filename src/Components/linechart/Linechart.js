@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
 import styles from './Linechart.module.css';
+//import { average_session } from '../../Data/mock.js'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { fetchUserAverageSessions } from '../Utils/fetchData.js';
@@ -9,6 +10,11 @@ function Linechart() {
 
     const { userId } = useParams();
     const [userAverageSessions, setUserAverageSessions] = useState();
+
+    /*useEffect(() => {
+        const averageSessionsMock = formatForAverageSessions(average_session.data);
+        setUserAverageSessions(averageSessionsMock);
+    }, []);*/
 
     useEffect(() => {
         async function getData() {
@@ -23,8 +29,13 @@ function Linechart() {
         getData();
     }, [userId]);
 
-    function CustomTooltip({active, payload, label}) {
-
+    /**
+     * Customize the tooltip structure
+     * @param { boolean } active
+     * @param { Object } payload
+     * @returns { HTMLElement }
+     */
+    function CustomTooltip({active, payload}) {
         if (active && payload && payload.length) {
           return (
             <div className={styles.customtooltip}>
@@ -35,6 +46,11 @@ function Linechart() {
         return null;
     }
 
+    /**
+     * Customize the background on hover
+     * @param { Object } props 
+     * @returns { SVGElement }
+     */
     function CustomCursor(props) {
         var x = props.points[0].x;
         var y = props.points[0].y;
