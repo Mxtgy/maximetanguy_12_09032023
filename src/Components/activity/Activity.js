@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import styles from './Activity.module.css';
+//import { activity } from '../../Data/mock.js'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { fetchUserActivity } from '../Utils/fetchData.js';
@@ -9,6 +10,11 @@ function Activity() {
 
     const { userId } = useParams();
     const [userActivity, setUserActivity] = useState();
+
+    /*useEffect(() => {
+        const activityMock = formatForActivity(activity.data);
+        setUserActivity(activityMock);
+    }, []);*/
 
     useEffect(() => {
         async function getData() {

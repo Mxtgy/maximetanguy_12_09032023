@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/linechart/Linechart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/linechart/Linechart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import styles from './Linechart.module.css';
+//import { average_session } from '../../Data/mock.js'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { fetchUserAverageSessions } from '../Utils/fetchData.js';
+import { formatForAverageSessions } from '../Utils/formatData';
+
+function Linechart() {
+
+    const { userId } = useParams();
+    const [userAverageSessions, setUserAverageSessions] = useState();
+
+    /*useEffect(() => {
+        const averageSessionsMock = formatForAverageSessions(average_session.data);
+        setUserAverageSessions(averageSessionsMock);
+    }, []);*/
+
+    useEffect(() => {
+        async function getData() {
+            if (userId) {
+                const getData = await fetchUserAverageSessions(userId);
+                if (getData) {
+                    const averageSessions = formatForAverageSessions(getData);
+                    setUserAverageSessions(averageSessions);
+                }
+            }
+        }
+        getData();
+    }, [userId]);
+
+    /**
+     * Customize the tooltip structure
+     * @param { boolean } active
+     * @param { Object } payload
+     * @returns { HTMLElement }
+     */
+    function CustomTooltip({active, payload}) {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
+          return (
+            &lt;div className={styles.customtooltip}>
+              &lt;p className={styles.label}>{payload[0].value} min&lt;/p>
+            &lt;/div>
+          );
+        }
+        return null;
+    }
+
+    /**
+     * Customize the background on hover
+     * @param { Object } props 
+     * @returns { SVGElement }
+     */
+    function CustomCursor(props) {
+        var x = props.points[0].x;
+        var y = props.points[0].y;
+        return (
+            &lt;Rectangle
+                width={400}
+                height={250}
+                x={x}
+                y={y - 70}
+                style={{background: '#000', opacity: 0.1}}
+            />
+        );
+    }
+
+    return (
+        &lt;div className={styles.chart}>
+            &lt;span className={styles.title}>Durée moyenne des &lt;strong>sessions&lt;/strong>&lt;/span>
+            { userAverageSessions ?
+                &lt;ResponsiveContainer width="100%" height="100%">
+                    &lt;LineChart data={userAverageSessions} margin={{ top: 65, right: 0, left: 0, bottom: 80 }}>
+                        &lt;defs>
+                            &lt;linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">
+                                &lt;stop offset="0%" stopColor="#FF0000" />
+                                &lt;stop offset="80%" stopColor="#FFF" />
+                                &lt;stop offset="100%" stopColor="#FFF" />
+                            &lt;/linearGradient>
+                        &lt;/defs>
+                        &lt;XAxis
+                            tickMargin={30}
+                            padding={{left:-15,right:-10}}
+                            tick={{fill: "#FFF", opacity: ".5", fontSize: 12}}
+                            axisLine={false}
+                            hide={true}
+                            tickLine={false}
+                            dataKey="day"
+                        />
+                        &lt;YAxis
+                            dataKey="sessionLength"
+                            hide={true}
+                        />
+                        &lt;Tooltip
+                            content={&lt;CustomTooltip />}
+                            wrapperStyle={{outline: 'none'}}
+                            cursor={&lt;CustomCursor />}
+                        />
+                        &lt;Line
+                            type="natural"
+                            unit="min"
+                            dataKey="sessionLength"
+                            stroke="url(#colorUv)"
+                            strokeWidth={2}
+                            dot={false}
+                            activeDot={{stroke: '#FFF', strokeOpacity: '.5', fill: '#FFF', strokeWidth: 7, r: 4}}
+                        />
+                    &lt;/LineChart>
+                &lt;/ResponsiveContainer>
+            : null}
+            &lt;div className={styles.days}>
+                &lt;span>L&lt;/span>
+                &lt;span>M&lt;/span>
+                &lt;span>M&lt;/span>
+                &lt;span>J&lt;/span>
+                &lt;span>V&lt;/span>
+                &lt;span>S&lt;/span>
+                &lt;span>D&lt;/span>
+            &lt;/div>
+        &lt;/div>
+    );
+}
+
+export default Linechart;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#fetchUserActivity">fetchUserActivity</a></li><li><a href="global.html#fetchUserAverageSessions">fetchUserAverageSessions</a></li><li><a href="global.html#fetchUserData">fetchUserData</a></li><li><a href="global.html#fetchUserPerformance">fetchUserPerformance</a></li><li><a href="global.html#fetchUserScore">fetchUserScore</a></li><li><a href="global.html#formatForActivity">formatForActivity</a></li><li><a href="global.html#formatForAverageSessions">formatForAverageSessions</a></li><li><a href="global.html#formatForPerformance">formatForPerformance</a></li><li><a href="global.html#formatForScore">formatForScore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Apr 17 2023 10:39:50 GMT+0900 (Japan Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,11 +1,7 @@
 import styles from './Keydata.module.css';
+import PropTypes from 'prop-types';
 
-function Keydata(props) {
-
-    const type = props.type;
-    const unite = props.unite;
-    const icon = props.icon;
-    const data = props.data;
+function Keydata({ type, unite, icon, data }) {
 
     return (
         <div className={styles.card}>
@@ -16,6 +12,13 @@ function Keydata(props) {
             </div>
         </div>
     );
+}
+
+Keydata.propTypes = {
+    type: PropTypes.string.isRequired,
+    unite: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    data: PropTypes.number.isRequired
 }
 
 export default Keydata;

@@ -1,5 +1,9 @@
+/**
+ * Format the user's score
+ * @param { Object } data User's raw data fetched previously
+ * @returns { Array }
+ */
 function formatForScore(data) {
-
     if (!data) return [];
     let value = data.score ?? null;
 
@@ -16,6 +20,11 @@ function formatForScore(data) {
     return score; 
 }
 
+/**
+ * Format the user's average sessions
+ * @param { Object } data User's raw average sessions data fetched previously
+ * @returns { Array }
+ */
 function formatForAverageSessions(data) {
 
     if (!data || !data.sessions) return [];
@@ -23,6 +32,11 @@ function formatForAverageSessions(data) {
 
 }
 
+/**
+ * Format the user's activity
+ * @param { Object } data User's raw activity data fetched previously
+ * @returns { Array }
+ */
 function formatForActivity(data) {
 
     if (!data || !data.sessions) return [];
@@ -40,6 +54,11 @@ function formatForActivity(data) {
     return sessionsArray;
 }
 
+/**
+ * Format the user's performance
+ * @param { Object } data User's raw performance data fetched previously
+ * @returns { Array }
+ */
 function formatForPerformance(data) {
 
     if (!data || !data.data) return [];

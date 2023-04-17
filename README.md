@@ -24,5 +24,5 @@ This is the frond-end of SportSee, a sports coaching application.
    ```
 4. Launch the app :
    ```sh
-   npm install
+   npm start
    ```
