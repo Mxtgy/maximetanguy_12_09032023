@@ -1,6 +1,9 @@
 import styles from './Keydata.module.css';
 import PropTypes from 'prop-types';
 
+/*
+This is the keydata component on the side of the page.
+*/
 function Keydata({ type, unite, icon, data }) {
 
     return (

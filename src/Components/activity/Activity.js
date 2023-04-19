@@ -6,6 +6,10 @@ import { useState, useEffect } from "react";
 import { fetchUserActivity } from '../Utils/fetchData.js';
 import { formatForActivity } from '../Utils/formatData';
 
+
+/* 
+This component is the user's activity chart (Barchart).
+ */
 function Activity() {
 
     const { userId } = useParams();

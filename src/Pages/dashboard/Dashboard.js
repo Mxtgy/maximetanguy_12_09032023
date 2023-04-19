@@ -14,7 +14,9 @@ import glucidIcon from '../../Assets/carbs-icon.svg';
 import lipidIcon from '../../Assets/fat-icon.svg';
 import styles from './Dashboard.module.css';
 
-
+/* 
+This component is the dashboard with all the charts and keydata inside.
+ */
 function Dashboard() {
 
     const { userId } = useParams();

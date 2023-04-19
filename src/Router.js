@@ -3,6 +3,9 @@ import Home from './Pages/homepage/Home.js';
 import Dashboard from './Pages/dashboard/Dashboard.js';
 import Error from './Pages/error/Error.js';
 
+/*
+This is the router managing all the routes.
+*/
 function Router() {
     return (
         <Routes>

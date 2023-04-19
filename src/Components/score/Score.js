@@ -1,11 +1,15 @@
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import styles from './Score.module.css';
-//import { user } from '../../Data/mock.js'
+//import { user } from '../../Data/mock.js';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { fetchUserScore } from '../Utils/fetchData.js';
 import { formatForScore } from '../Utils/formatData';
 
+
+/* 
+This component is the user's score chart (Piechart).
+ */
 function Score() {
 
     const { userId } = useParams();
