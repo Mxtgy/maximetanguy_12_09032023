@@ -6,6 +6,10 @@ import { useState, useEffect } from "react";
 import { fetchUserPerformance } from '../Utils/fetchData.js';
 import { formatForPerformance } from '../Utils/formatData';
 
+
+/* 
+This component is the user's performance chart (radarchart).
+ */
 function Performance() {
 
     const { userId } = useParams();

@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom';
 import styles from './Tabicon.module.css';
 import PropTypes from 'prop-types';
 
+/* 
+This is the link component that is inside the sidebar.
+*/
 function Sport({ data, img, path }) {
-
-    /*const data = prop.data;
-    const urlImg = prop.img;
-    const path = prop.path;*/
 
     return (
         <li className={styles.li}>

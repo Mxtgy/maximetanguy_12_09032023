@@ -6,6 +6,10 @@ import { useState, useEffect } from "react";
 import { fetchUserAverageSessions } from '../Utils/fetchData.js';
 import { formatForAverageSessions } from '../Utils/formatData';
 
+
+/* 
+This component is the user's average sessions chart (linechart).
+ */
 function Linechart() {
 
     const { userId } = useParams();
